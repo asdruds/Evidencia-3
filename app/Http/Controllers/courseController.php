@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Curso; // Cambiamos el modelo a Curso
+use App\Models\Curso;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Curso::all(); // Usamos el modelo Curso
+        $courses = Curso::all(); 
         return view("courses.index", ['courses' => $courses]);
     }
 
@@ -27,11 +27,11 @@ class CourseController extends Controller
             'idioma' => 'required|max:100',
             'nivel' => 'required|in:Principiante,Intermedio,Avanzado',
             'profesor' => 'required|max:100',
-            'correo' => 'required|email|unique:cursos,correo', // Usamos 'cursos' en lugar de 'courses'
+            'correo' => 'required|email|unique:cursos,correo',
             'imagen' => 'required|image',
         ]);
 
-        $course = new Curso; // Usamos el modelo Curso
+        $course = new Curso;
         $course->titulo = $request->titulo;
         $course->descripcion = $request->descripcion;
         $course->idioma = $request->idioma;
